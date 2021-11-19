@@ -3,11 +3,22 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javaresources:
 
-queue:
-  name: Default
-  demands: maven
+#Run the pipeline using a microsoft hosted build release agent
+pool:
+  vmImage: 'ubuntu-latest' # other options: 'macOS-latest', 'windows-latest'
+
+#Run the pipeline using a self hosted build release agent 
+#queue:
+#  name: Default
+#  demands: maven
 
 steps:
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "##vso[task.setvariable variable=JAVA_HOME]$(JAVA_HOME_11_X64)"
+      echo "##vso[task.setvariable variable=PATH]$(JAVA_HOME_11_X64)\bin;$(PATH)"
 - task: Maven@3
   displayName: 'Maven install SQL Server JDBC Driver'
   inputs:
