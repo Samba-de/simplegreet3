@@ -7,3 +7,4 @@ This is a very reduced sample for an application using Spring Boot and Hibernate
     * [Serving Web Content with MVC](https://spring.io/guides/gs/serving-web-content/)
     * [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
     * ##
+##
